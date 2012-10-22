@@ -1,15 +1,20 @@
 // ==UserScript==
 // @name           fake3gokushi
-// @version        2012.7.23 (for gozensan)
-// @namespace      http://userscripts.org/scripts/show/132766
-// @description    mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
+// @version        2012.7.23
+// @namespace      mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
 // @icon           http://5zen.info/hokan/icon.png
 // @include        http://*.3gokushi.jp/*
+// @include        https://*.3gokushi.jp/*
+// @include        http://*.nexon.com/*
+// @include        http://*.3gokushi.jp/card/exhibit_list.php*
+// @include        http://*.3gokushi.jp/card/bid_list.php*
+// @include        http://*.3gokushi.jp/card/busyobook_picture.php*
+// @include        http://*.3gokushi.jp/busyodas/busyodas.php*
+// @include        http://*.3gokushi.jp/busyodas/b3kuji.php*
+// @include        http://*.3gokushi.jp/alliance/alliance_log.php*
 // @require	   http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js
-// @updateURL      http://userscripts.org/scripts/source/132766.meta.js
-// @require        http://sizzlemctwizzle.com/updater.php?id=132766
-// @run-at         document-end
-// ==/UserScript==
+// @description    mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
+//
 //----更新履歴----
 // 2012.05.09	美羽先生の口調修正・アイテムショップの画像変更
 // 2012.05.10	ヤバゲー鯖で画像が変わらなかったのを修正（多分他も大丈夫かと・・・）
