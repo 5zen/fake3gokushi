@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           fake3gokushi
-// @version        2012.7.23
+// @version        2012.12.23
 // @namespace      mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
 // @icon           https://raw.github.com/5zen/fake3gokushi/master/icon.png
 // @include        http://*.3gokushi.jp/*
@@ -31,6 +31,7 @@
 //		美羽様の画像を４種類からランダムに表示に修正
 // 2012.07.03	プロフへのリンクがおっさん'sになっていたのを修正
 // 2012.07.23	カード番号に a b を追加したためちょっと修正
+// 2012.12.23	ゾンビおっさんを修正
 
 jQuery.noConflict();
 j$ = jQuery;
@@ -39,7 +40,7 @@ j$ = jQuery;
 // 変数定義
 // =================================================================================================================================================================================
 var PGNAME = "_fake3gokushi_5zen_v2012.05.23";		//グリモン領域への保存時のPGの名前
-var VERSION = "2012.07.23";				// バージョン情報
+var VERSION = "2012.12.23";				// バージョン情報
 var HOST = location.hostname;				//アクセスURLホスト
 
 //                                 1 1 1 1 1 1 1 1 1 1
@@ -469,7 +470,7 @@ var $e = function(e,t,f) { if (!e) return; e.addEventListener(t, f, false); };
 	}
 
 	// プロフィール背景画像を差し替え
-	GM_addStyle('div#header_bottom #profileBtn a { background-image:url("http://lh3.ggpht.com/_yaaM6-lAuRY/TNfm_YvWZxI/AAAAAAAAAt0/jnHgWqKO96Q/profile.png") !important }');
+	GM_addStyle('div#profileBtn a { background-image:url("http://lh3.ggpht.com/_yaaM6-lAuRY/TNfm_YvWZxI/AAAAAAAAAt0/jnHgWqKO96Q/profile.png") !important }');
 
 	if (OPT_TEACHER == "MU") {
 		GM_addStyle('div#itemShopWrapper { background-image:url("http://lh3.ggpht.com/-Z7FTkdPC8g0/T7pJ_mH-LhI/AAAAAAAAA3s/vWwb-I_xaa4/s550/itemshop_bg_1.png") !important }');
