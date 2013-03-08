@@ -1,18 +1,21 @@
 // ==UserScript==
-// @name           fake3gokushi
-// @version        2012.12.23
-// @namespace      mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
-// @icon           https://raw.github.com/5zen/fake3gokushi/master/icon.png
-// @include        http://*.3gokushi.jp/*
-// @include        https://*.3gokushi.jp/*
-// @include        http://*.nexon.com/*
-// @include        http://*.3gokushi.jp/card/exhibit_list.php*
-// @include        http://*.3gokushi.jp/card/bid_list.php*
-// @include        http://*.3gokushi.jp/card/busyobook_picture.php*
-// @include        http://*.3gokushi.jp/busyodas/busyodas.php*
-// @include        http://*.3gokushi.jp/busyodas/b3kuji.php*
-// @include        http://*.3gokushi.jp/alliance/alliance_log.php*
-// @require	   http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js
+// @name	fake3gokushi
+// @version	2013.03.08
+// @namespace	mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
+// @icon	https://raw.github.com/5zen/fake3gokushi/master/icon.png
+// @include	http://*.3gokushi.jp/*
+// @include	https://*.3gokushi.jp/*
+// @include	http://*.nexon.com/*
+// @include	http://*.3gokushi.jp/card/exhibit_list.php*
+// @include	http://*.3gokushi.jp/card/bid_list.php*
+// @include	http://*.3gokushi.jp/card/busyobook_picture.php*
+// @include	http://*.3gokushi.jp/busyodas/busyodas.php*
+// @include	http://*.3gokushi.jp/busyodas/b3kuji.php*
+// @include	http://*.3gokushi.jp/alliance/alliance_log.php*
+// @require	http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js
+// @grant	GM_getValue
+// @grant	GM_setValue
+// @grant	GM_xmlhttpRequest
 // @description    mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
 // ==/UserScript==
 //
@@ -32,6 +35,8 @@
 // 2012.07.03	プロフへのリンクがおっさん'sになっていたのを修正
 // 2012.07.23	カード番号に a b を追加したためちょっと修正
 // 2012.12.23	ゾンビおっさんを修正
+// 2013.03.08	Firefox 19.0.2 + Greasemonkey 1.8 での動作するように修正
+//		GoogleSheetが何故か破壊されていたので修正
 
 jQuery.noConflict();
 j$ = jQuery;
@@ -40,7 +45,7 @@ j$ = jQuery;
 // 変数定義
 // =================================================================================================================================================================================
 var PGNAME = "_fake3gokushi_5zen_v2012.05.23";		//グリモン領域への保存時のPGの名前
-var VERSION = "2012.12.23";				// バージョン情報
+var VERSION = "2013.03.08";				// バージョン情報
 var HOST = location.hostname;				//アクセスURLホスト
 
 //                                 1 1 1 1 1 1 1 1 1 1
@@ -79,11 +84,10 @@ var $e = function(e,t,f) { if (!e) return; e.addEventListener(t, f, false); };
 
 	LoadSettingBox();		// データのロード
 	disp_Options();			// 設定メニューの追加
-
 	if(location.href.indexOf("deck.php") >= 0) {
 		GM_xmlhttpRequest( {
 			method: "get",
-			url: "http://spreadsheets.google.com/feeds/list/0AqsbsmYpZyU5dGYxaU5MNlh5U3czMmc4RkdKZnJyLUE/od6/public/values?alt=json&sq=カード番号=0",
+			url: "http://spreadsheets.google.com/feeds/list/0AqsbsmYpZyU5dE9ST1FJWUx5Zl9VZE9BS3ZLYV9nVkE/od6/public/values?alt=json&sq=カード番号=0",
 			async:false,
 			onload: function(res) {
 				// カード番号 0 のタイムスタンプが更新日となる
@@ -95,7 +99,7 @@ var $e = function(e,t,f) { if (!e) return; e.addEventListener(t, f, false); };
 						// 新しいSpreadsheet情報をローカルデータに書き出し
 						GM_xmlhttpRequest( {
 							method: "get",
-							url: "http://spreadsheets.google.com/feeds/list/0AqsbsmYpZyU5dGYxaU5MNlh5U3czMmc4RkdKZnJyLUE/od6/public/values?alt=json&sq=カード番号!=0",
+							url: "http://spreadsheets.google.com/feeds/list/0AqsbsmYpZyU5dE9ST1FJWUx5Zl9VZE9BS3ZLYV9nVkE/od6/public/values?alt=json&sq=カード番号!=0",
 							onload: function(res) {
 								GM_setValue("fake3gokushi_illustData",res.responseText);
 								// データ更新後に置き換え実行
