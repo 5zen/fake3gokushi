@@ -16,6 +16,7 @@
 // @grant	GM_getValue
 // @grant	GM_setValue
 // @grant	GM_xmlhttpRequest
+// @grant	GM_addStyle
 // @description    mixi版 ブラウザ三国志の武将イラストを某ゲームのイラストに置き換えるスクリプトです。色々勝手に使ってます。ごめんなさい。
 // ==/UserScript==
 //
